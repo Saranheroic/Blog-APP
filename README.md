@@ -26,6 +26,7 @@ A simple RESTful API for managing blog posts, built with Node.js and Express.
 
 1. Clone the repository:
    ```bash
-  https://github.com/Saranheroic/Blog-APP.git
-There is no documentaion. everything you need is in the folder itself.
+   git clone https://github.com/Saranheroic/Blog-APP.git
+ 
+# There is no documentaion. everything you need is in the folder itself.
   
