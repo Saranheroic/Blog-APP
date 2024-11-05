@@ -42,8 +42,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //CHALLENGE 1: GET All posts
 app.get("/posts", (req,res)=>{
-  res.json(posts)
-  console.log(posts);
+  const { author } = req.query;
+  let filteredPosts = posts;
+
+  if (author) {
+    filteredPosts = posts.filter((post) => post.author === author);
+  }
+
+  res.json(filteredPosts);
 })
 
 //CHALLENGE 2: GET a specific post by id

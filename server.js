@@ -77,6 +77,19 @@ app.get("/api/posts/delete/:id", async (req, res) => {
   }
 });
 
+app.get("/posts", async (req, res) => {
+  const { author } = req.query;
+  try {
+    const url = author ? `${API_URL}/posts?author=${encodeURIComponent(author)}` : `${API_URL}/posts`;
+    const response = await axios.get(url);
+    res.render("index.ejs", { posts: response.data });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching posts" });
+  }
+});
+
+
+
 app.listen(port, () => {
   console.log(`Backend server is running on http://localhost:${port}`);
 });

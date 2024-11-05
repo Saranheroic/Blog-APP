@@ -10,7 +10,32 @@
 </head>
 
 <body>
+  
   <div class="container">
+
+  <!---This is for drop down search-->  
+    <form class="search" onsubmit="return submitAuthorForm()" >
+      <label for="authors">Choose an author:</label>
+      <select name="author" id="authors">
+        <% const authors = Array.from(new Set(posts.map(post => post.author))); %>
+        <% authors.forEach(author => { %>
+          <option value="<%= author %>"><%= author %></option>
+        <% }); %>
+      </select>
+      <br>
+      <button type="submit" class="search-button">  find     authour</button>
+    </form>
+    <script>
+      function submitAuthorForm() {
+        const selectedAuthor = document.getElementById("authors").value;
+        window.location.href = `/posts?author=${encodeURIComponent(selectedAuthor)}`;
+        return false; // Prevent default form submission
+      }
+    </script>
+    
+    
+<!---This is end of drop down search-->
+    
     <h1>My Blog</h1>
     <a id="newPostBtn" href="/new">New Post</a>
     <ul id="postsList">
